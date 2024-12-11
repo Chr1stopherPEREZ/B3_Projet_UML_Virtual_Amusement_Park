@@ -1,0 +1,65 @@
+@startuml Class_Diagram
+
+class Personne {
+    - id: int
+    - nom: String
+}
+
+class Salarié {
+    - role: String
+}
+
+class Visiteur {
+    - tel: int
+    - notifications: List<String>
+    + acheterBillet(): Billet
+    + reserverAttraction(attraction: Attraction, horaire: DateTime): Reservation
+    + consulterAttractions(): List<Attraction>
+    + consulterTempsAttente(): Map<Attraction, int>
+}
+
+class Operateurs_d_attraction {
+    + suivreFileAttraction(attraction: Attraction): void
+    + gererIncident(): void
+}
+
+class Personnel_de_maintenance {
+    + reparerAttraction(attraction: Attraction): void
+}
+
+class Attraction {
+    - id: int
+    - nom: String
+    - type: String
+    - etat: String
+    - fileAttente: int
+    + ouvrir(): void
+    + fermer(): void
+    + signalerMaintenance(): void
+    + mettreEnService(): void
+}
+
+class Billet {
+    - id: int
+    - date: Date
+    - prix: float
+}
+
+class Reservation {
+    - id: int
+    - horaire: DateTime
+    - attraction: Attraction
+}
+
+Personne <|-- Visiteur
+Personne <|-- Salarié
+Salarié <|-- Operateurs_d_attraction
+Salarié <|-- Personnel_de_maintenance
+
+Visiteur --> "1..*" Billet
+Visiteur --> "0..*" Reservation
+Attraction --> "0..*" Reservation
+Operateurs_d_attraction --> "1..*" Attraction
+Personnel_de_maintenance --> "..*" Attraction
+
+@enduml

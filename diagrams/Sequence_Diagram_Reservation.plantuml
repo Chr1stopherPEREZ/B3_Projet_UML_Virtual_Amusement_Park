@@ -1,0 +1,15 @@
+
+@startuml Sequence_Diagram_Reservation
+
+actor Visiteur
+participant "Système de Réservation" as Systeme
+participant "Base de Données" as DB
+
+Visiteur -> Systeme: Demande de réservation (attraction, horaire)
+Systeme -> DB: Vérifie disponibilité (attraction, horaire)
+DB --> Systeme: Disponibilité confirmée
+Systeme -> DB: Enregistre réservation
+DB --> Systeme: Confirmation d'enregistrement
+Systeme --> Visiteur: Réservation confirmée
+
+@enduml

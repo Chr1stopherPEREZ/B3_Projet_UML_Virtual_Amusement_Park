@@ -1,0 +1,13 @@
+
+@startuml State_Diagram_Attraction
+
+state "Attraction" as A {
+    [*] --> Fermée
+    Fermée --> Ouverte : Ouvrir l'attraction
+    Ouverte --> EnMaintenance : Problème signalé
+    Ouverte --> Fermée : Fin de journée
+    EnMaintenance --> Fermée : Fin de journée
+    EnMaintenance --> Ouverte : Problème reglé
+}
+
+@enduml

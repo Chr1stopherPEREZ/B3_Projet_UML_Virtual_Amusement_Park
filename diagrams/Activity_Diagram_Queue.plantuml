@@ -1,0 +1,19 @@
+
+@startuml Activity_Diagram_Queue
+
+start
+:Visiteur arrive;
+if (Attraction ouverte?) then (oui)
+    :Entrer dans la file d'attente;
+    :Mise à jour de la position dans la file;
+    if (Visiteur atteint le début?) then (oui)
+        :Accéder à l'attraction;
+    else (non)
+        :Attendre;
+    endif
+else (non)
+    :Recevoir notification "Attraction fermée";
+endif
+stop
+
+@enduml

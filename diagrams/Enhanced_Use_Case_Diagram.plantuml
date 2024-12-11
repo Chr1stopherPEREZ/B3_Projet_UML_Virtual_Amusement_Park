@@ -1,0 +1,28 @@
+
+@startuml Enhanced_Use_Case
+
+actor Visiteur
+actor Operateurs_d_attraction
+actor Personnel_de_maintenance
+
+Visiteur --> (Acheter un billet)
+Visiteur --> (Réserver une attraction)
+Visiteur --> (Consulter la liste des attractions)
+Visiteur --> (Consulter les temps d'attente)
+Visiteur --> (Recevoir des notifications)
+
+Operateurs_d_attraction --> (Signaler une attraction en maintenance)
+Operateurs_d_attraction --> (Accueillir les visiteurs)
+Operateurs_d_attraction --> (Gérer les créneaux horaires)
+
+Personnel_de_maintenance --> (Réparer les manèges)
+Personnel_de_maintenance --> (Remettre en service les attractions)
+
+(Signaler une attraction en maintenance) --> (Réparer les manèges)
+(Réparer les manèges) --> (Remettre en service les attractions)
+(Acheter un billet) --> Visiteur
+(Réserver une attraction) --> Operateurs_d_attraction
+(Gérer les créneaux horaires) --> Visiteur
+(Accueillir les visiteurs) --> Visiteur
+
+@enduml
